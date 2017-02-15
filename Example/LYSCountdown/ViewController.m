@@ -23,19 +23,23 @@
     
     LYSCountdown * countdown = [[LYSCountdown alloc]init];
     
-    countdown.begin(10).interval(2).start();
+    countdown.begin(10).interval(2).finish(4).start();
     
-
     countdown.actionBlock = ^(LYSCountdown *countdown,CGFloat lastTime){
       
         NSLog(@"进行%@:%f",countdown,lastTime);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"界面调整要在主线");
+        });
         
     };
     
     countdown.finishBlock = ^(LYSCountdown *countdown,CGFloat lastTime){
         
         NSLog(@"结束%@:%f",countdown,lastTime);
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"界面调整要在主线");
+        });
     };
     
     
