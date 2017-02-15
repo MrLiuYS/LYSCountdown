@@ -12,6 +12,7 @@
 
 @interface ViewController ()
 
+
 @end
 
 @implementation ViewController
@@ -23,13 +24,20 @@
     
     LYSCountdown * countdown = [[LYSCountdown alloc]init];
     
-    countdown.begin(10).interval(2).finish(4).start();
+//    //倒计时60s
+//    countdown.begin(60).interval(1).start();
+//    //倒计时60s,同上面的
+//    countdown.begin(60).interval(1).finish(0).start();
+//    //计时器,0->最大值
+//    countdown.begin(0).interval(1).finish(MAXFLOAT).orderBy(LYSCountdownOrderBy_ASC).start();
+//    //计时器,0->最小值
+    countdown.begin(0).interval(1).finish(-MAXFLOAT).orderBy(LYSCountdownOrderBy_DASC).start();
     
     countdown.actionBlock = ^(LYSCountdown *countdown,CGFloat lastTime){
       
         NSLog(@"进行%@:%f",countdown,lastTime);
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"界面调整要在主线");
+            //界面调整要在主线
         });
         
     };
@@ -38,12 +46,16 @@
         
         NSLog(@"结束%@:%f",countdown,lastTime);
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"界面调整要在主线");
+            //界面调整要在主线
         });
     };
     
     
 }
+
+
+
+
 
 
 - (void)didReceiveMemoryWarning {

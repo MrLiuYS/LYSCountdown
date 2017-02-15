@@ -39,13 +39,13 @@ typedef void (^finishBlock)(id countdown,CGFloat lastTime);
 /**
  开始时间
  */
-- (LYSCountdown *(^)(NSInteger beginTime)) begin;
+- (LYSCountdown *(^)(CGFloat beginTime)) begin;
 
 
 /**
  结束时间
  */
-- (LYSCountdown *(^)(NSInteger finishTime)) finish;
+- (LYSCountdown *(^)(CGFloat finishTime)) finish;
 
 /**
  顺序

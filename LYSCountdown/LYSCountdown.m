@@ -15,8 +15,8 @@
     
 }
 
-@property (nonatomic, assign) NSInteger mBeginTime;
-@property (nonatomic, assign) NSInteger mFinishTime;
+@property (nonatomic, assign) CGFloat mBeginTime;
+@property (nonatomic, assign) CGFloat mFinishTime;
 @property (nonatomic, assign) CGFloat mIntervalTime;
 
 @property (nonatomic, assign) LYSCountdownOrderBy mOrderBy; /**< 时间加载方向 */
@@ -39,7 +39,7 @@
     
     [self cancel];
     
-    __block NSInteger time = self.mBeginTime;
+    __block CGFloat time = self.mBeginTime;
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     _disTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
@@ -86,16 +86,16 @@
 /**
  开始时间
  */
-- (LYSCountdown *(^)(NSInteger beginTime)) begin{
+- (LYSCountdown *(^)(CGFloat beginTime)) begin{
     
-    return ^id(NSInteger beginTime){
+    return ^id(CGFloat beginTime){
         self.mBeginTime += beginTime;
         return self;
     };
 }
 
-- (LYSCountdown *(^)(NSInteger finishTime)) finish{
-    return ^id(NSInteger finishTime){
+- (LYSCountdown *(^)(CGFloat finishTime)) finish{
+    return ^id(CGFloat finishTime){
         self.mFinishTime += finishTime;
         return self;
     };
