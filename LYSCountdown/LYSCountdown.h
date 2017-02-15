@@ -58,8 +58,14 @@ typedef void (^finishBlock)(id countdown,CGFloat lastTime);
 - (LYSCountdown *(^)(CGFloat intervalTime)) interval;
 
 
+/**
+ 开启倒计时
+ */
 - (LYSCountdown *(^)()) start;
 
+/**
+ 关闭倒计时
+ */
 - (LYSCountdown *(^)()) close;
 
 

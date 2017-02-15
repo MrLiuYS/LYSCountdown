@@ -28,6 +28,11 @@
 
 @implementation LYSCountdown
 
+- (void)dealloc{
+    [self cancel];
+}
+
+
 - (void)cancel{
     if (_disTimer) {
         dispatch_source_cancel(_disTimer);

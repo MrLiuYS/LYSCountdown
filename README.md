@@ -66,3 +66,11 @@ countdown.begin(60).interval(1).start();
     };
 ```
 
+##离开视图调用
+```
+- (void)dealloc{
+    countdown.close();
+}
+```
+
+
