@@ -94,14 +94,14 @@
 - (LYSCountdown *(^)(CGFloat beginTime)) begin{
     
     return ^id(CGFloat beginTime){
-        self.mBeginTime += beginTime;
+        self.mBeginTime = beginTime;
         return self;
     };
 }
 
 - (LYSCountdown *(^)(CGFloat finishTime)) finish{
     return ^id(CGFloat finishTime){
-        self.mFinishTime += finishTime;
+        self.mFinishTime = finishTime;
         return self;
     };
 }
@@ -111,7 +111,7 @@
  */
 - (LYSCountdown *(^)(CGFloat intervalTime)) interval{
     return ^id(CGFloat intervalTime){
-        self.mIntervalTime += intervalTime;
+        self.mIntervalTime = intervalTime;
         return self;
     };
 }
