@@ -15,6 +15,8 @@
     
 }
 
+@property (nonatomic, assign) BOOL isPlay; /**< 正在运行 */
+
 @property (nonatomic, assign) CGFloat mBeginTime;
 @property (nonatomic, assign) CGFloat mFinishTime;
 @property (nonatomic, assign) CGFloat mIntervalTime;
@@ -37,6 +39,7 @@
     if (_disTimer) {
         dispatch_source_cancel(_disTimer);
         _disTimer = nil;
+        self.isPlay = NO;
     }
 }
 
@@ -84,8 +87,14 @@
         
     });
     
-    dispatch_resume(_disTimer);
+    [self dispatch_resume];
     
+}
+
+- (void)dispatch_resume {
+    if (_disTimer && !self.isPlay) {
+        dispatch_resume(_disTimer);
+    }
 }
 
 /**

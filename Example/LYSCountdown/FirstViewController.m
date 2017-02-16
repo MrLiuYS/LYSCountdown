@@ -14,6 +14,7 @@
     LYSCountdown * countdown;
 }
 
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 
 @end
@@ -22,6 +23,7 @@
 
 - (void)dealloc{
     countdown.close();
+    NSLog(@"释放");
 }
 
 - (void)viewDidLoad {
@@ -35,15 +37,18 @@
     //    //倒计时60s,同上面的
     //    countdown.begin(60).interval(1).finish(0).start();
     //    //计时器,0->最大值
-    //    countdown.begin(0).interval(1).finish(MAXFLOAT).orderBy(LYSCountdownOrderBy_ASC).start();
+        countdown.begin(0).interval(0.1).finish(MAXFLOAT).orderBy(LYSCountdownOrderBy_ASC);
     //    //计时器,0->最小值
-    countdown.begin(0).interval(1).finish(-MAXFLOAT).orderBy(LYSCountdownOrderBy_DASC).start();
+//    countdown.begin(0).interval(1).finish(-MAXFLOAT).orderBy(LYSCountdownOrderBy_DASC);
+    
+    __block UILabel *pLabel = self.timeLabel;
     
     countdown.actionBlock = ^(LYSCountdown *cd,CGFloat lastTime){
         
         NSLog(@"进行%@:%f",cd,lastTime);
         dispatch_async(dispatch_get_main_queue(), ^{
             //界面调整要在主线
+            pLabel.text = [NSString stringWithFormat:@"%f",lastTime];
         });
         
     };
@@ -58,19 +63,17 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (IBAction)touchStart:(id)sender {
+    
+    countdown.start();
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)touchClose:(id)sender {
+    countdown.close();
 }
-*/
+
+
 
 @end

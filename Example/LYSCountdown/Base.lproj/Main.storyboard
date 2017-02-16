@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,9 +50,54 @@
                     <view key="view" contentMode="scaleToFill" id="aTF-TA-Z29">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCx-0g-S0l">
+                                <rect key="frame" x="36" y="84" width="303" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cnG-17-Jb0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIY-VG-VMF">
+                                <rect key="frame" x="36" y="154" width="303" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="zLX-dV-fSA"/>
+                                </constraints>
+                                <state key="normal" title="开始"/>
+                                <connections>
+                                    <action selector="touchStart:" destination="7Vj-8k-4Jg" eventType="touchUpInside" id="70H-hp-c2q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGQ-hv-lEz">
+                                <rect key="frame" x="36" y="224" width="303" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yzh-qc-7sL"/>
+                                </constraints>
+                                <state key="normal" title="停止"/>
+                                <connections>
+                                    <action selector="touchClose:" destination="7Vj-8k-4Jg" eventType="touchUpInside" id="7bk-IJ-lc7"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iGQ-hv-lEz" firstAttribute="leading" secondItem="aTF-TA-Z29" secondAttribute="leadingMargin" constant="20" id="2rm-0d-VCd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VIY-VG-VMF" secondAttribute="trailing" constant="20" id="Oix-E6-VAR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yCx-0g-S0l" secondAttribute="trailing" constant="20" id="P6i-ot-Q4i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iGQ-hv-lEz" secondAttribute="trailing" constant="20" id="Z8Q-xy-rY5"/>
+                            <constraint firstItem="iGQ-hv-lEz" firstAttribute="top" secondItem="VIY-VG-VMF" secondAttribute="bottom" constant="20" id="b1p-yJ-eVK"/>
+                            <constraint firstItem="VIY-VG-VMF" firstAttribute="leading" secondItem="aTF-TA-Z29" secondAttribute="leadingMargin" constant="20" id="rOU-w4-11s"/>
+                            <constraint firstItem="VIY-VG-VMF" firstAttribute="top" secondItem="yCx-0g-S0l" secondAttribute="bottom" constant="20" id="uHC-EJ-hQs"/>
+                            <constraint firstItem="yCx-0g-S0l" firstAttribute="leading" secondItem="aTF-TA-Z29" secondAttribute="leadingMargin" constant="20" id="voy-cm-Rdm"/>
+                            <constraint firstItem="yCx-0g-S0l" firstAttribute="top" secondItem="3vg-gI-yFx" secondAttribute="bottom" constant="20" id="x2e-2a-ei3"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rSg-lv-Jpl"/>
+                    <connections>
+                        <outlet property="timeLabel" destination="yCx-0g-S0l" id="cO1-c9-Isl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytx-aF-A5q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
